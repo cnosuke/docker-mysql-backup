@@ -29,7 +29,7 @@ DATABASES.each do |d|
   puts "Backup #{d} ..."
   backup_database(d)
   if LZ4_DIST
-    puts "\tcompress to #{LZ4_DIST}#{db_name}.dump.sql.lz4"
+    puts "\tcompress to #{LZ4_DIST}#{d}.dump.sql.lz4"
     compress(d)
   end
 end
