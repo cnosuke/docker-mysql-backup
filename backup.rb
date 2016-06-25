@@ -22,7 +22,7 @@ def compress(db_name)
   out_fname = "#{LZ4_DIST}#{db_name}.dump.sql.lz4"
   cmd = "lz4 #{in_fname} #{out_fname}"
 
-  sytem(cmd)
+  system(cmd)
 end
 
 DATABASES.each do |d|
