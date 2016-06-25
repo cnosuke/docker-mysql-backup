@@ -14,7 +14,7 @@ end
 
 def fname(dist, db_name, postfix = nil)
   dist = dist.end_with?('/') ? dist : "#{dist}/"
-  time = STRFTIME ? Time.now.strftime(STRFTIME) : nil
+  time = STRFTIME ? "_"+Time.now.strftime(STRFTIME) : nil
 
   [dist, db_name, time, ".dump", ".sql", postfix].compact.join
 end
