@@ -7,6 +7,7 @@ DB_PW     = ENV['DB_PASSWORD']
 DIST      = ENV['DIST'] || '/tmp/backups/'
 LZ4_DIST  = ENV['LZ4_DIST'] || nil
 STRFTIME  = ENV['STRFTIME'] || nil
+NOW = Time.now
 
 if [DATABASES, DB_HOST, DB_USER, DB_PW].any?(&:nil?)
   raise ArgumentError
@@ -14,7 +15,7 @@ end
 
 def fname(dist, db_name, postfix = nil)
   dist = dist.end_with?('/') ? dist : "#{dist}/"
-  time = STRFTIME ? "_"+Time.now.strftime(STRFTIME) : nil
+  time = STRFTIME ? "_"+NOW.strftime(STRFTIME) : nil
 
   [dist, db_name, time, ".dump", ".sql", postfix].compact.join
 end
